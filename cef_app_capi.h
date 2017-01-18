@@ -265,8 +265,8 @@ typedef struct _cef_time_t {
 
 
 
-__attribute__ ((visibility("default"))) int cef_time_to_timet(const cef_time_t* cef_time, time_t* time);
-__attribute__ ((visibility("default"))) int cef_time_from_timet(time_t time, cef_time_t* cef_time);
+// __attribute__ ((visibility("default"))) int cef_time_to_timet(const cef_time_t* cef_time, time_t* time);
+// __attribute__ ((visibility("default"))) int cef_time_from_timet(time_t time, cef_time_t* cef_time);
 
 
 
@@ -1021,7 +1021,7 @@ typedef enum {
     DRAG_OPERATION_PRIVATE = 8,
     DRAG_OPERATION_MOVE = 16,
     DRAG_OPERATION_DELETE = 32,
-    DRAG_OPERATION_EVERY = UINT_MAX
+    // DRAG_OPERATION_EVERY = UINT_MAX
 } cef_drag_operations_mask_t;
 
 
