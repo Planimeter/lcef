@@ -7,4 +7,4 @@
 local ffi = require( "ffi" )
 io.input( "cef_app_capi.h" )
 ffi.cdef( io.read( "*all" ) )
-return ffi.load( "cef" )
+return ffi.load( ffi.os == "Windows" and "libcef" or "cef" )
