@@ -325,8 +325,8 @@ typedef struct _cef_time_t {
 
 
 
-__attribute__((visibility("default"))) int cef_time_to_timet(const cef_time_t* cef_time, time_t* time);
-__attribute__((visibility("default"))) int cef_time_from_timet(time_t time, cef_time_t* cef_time);
+// __attribute__((visibility("default"))) int cef_time_to_timet(const cef_time_t* cef_time, time_t* time);
+// __attribute__((visibility("default"))) int cef_time_from_timet(time_t time, cef_time_t* cef_time);
 
 
 
@@ -1064,7 +1064,7 @@ typedef enum {
   DRAG_OPERATION_PRIVATE = 8,
   DRAG_OPERATION_MOVE = 16,
   DRAG_OPERATION_DELETE = 32,
-  DRAG_OPERATION_EVERY = UINT_MAX
+  DRAG_OPERATION_EVERY = 0xFFFFU/0xFFFFFFFF
 } cef_drag_operations_mask_t;
 
 
@@ -9927,28 +9927,28 @@ typedef struct _cef_server_handler_t {
 
 
 
-typedef pid_t cef_platform_thread_id_t;
+// typedef pid_t cef_platform_thread_id_t;
 
 
 
 
 
 
-__attribute__((visibility("default"))) cef_platform_thread_id_t cef_get_current_platform_thread_id();
+// __attribute__((visibility("default"))) cef_platform_thread_id_t cef_get_current_platform_thread_id();
 
 
 
 
 
-typedef pthread_t cef_platform_thread_handle_t;
+// typedef pthread_t cef_platform_thread_handle_t;
 
 
 
 
 
 
-__attribute__((visibility("default"))) cef_platform_thread_handle_t
-cef_get_current_platform_thread_handle();
+// __attribute__((visibility("default"))) cef_platform_thread_handle_t
+// cef_get_current_platform_thread_handle();
 typedef struct _cef_thread_t {
 
 
@@ -9966,8 +9966,8 @@ typedef struct _cef_thread_t {
 
 
 
-  cef_platform_thread_id_t(* get_platform_thread_id)(
-      struct _cef_thread_t* self);
+  // cef_platform_thread_id_t(* get_platform_thread_id)(
+  //     struct _cef_thread_t* self);
 
 
 
