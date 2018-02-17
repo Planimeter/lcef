@@ -353,36 +353,50 @@ __attribute__((visibility("default"))) int cef_time_delta(const cef_time_t* cef_
 
 
 
-typedef struct _cef_main_args_t {
-  int argc;
-  char** argv;
-} cef_main_args_t;
+///
+// Structure representing CefExecuteProcess arguments.
+///
+typedef struct _cef_main_args_t { HINSTANCE instance; } cef_main_args_t;
 
 
 
 
+typedef unsigned long       DWORD;
+struct HWND__{int unused;}; typedef struct HWND__ *HWND;
+struct HMENU__{int unused;}; typedef struct HMENU__ *HMENU;
+///
+// Structure representing window information.
+///
 typedef struct _cef_window_info_t {
+  // Standard parameters required by CreateWindowEx()
+  DWORD ex_style;
   cef_string_t window_name;
+  DWORD style;
   int x;
   int y;
   int width;
   int height;
+  HWND parent_window;
+  HMENU menu;
 
-
-
-
-  int hidden;
-
-
-
-
-  void* parent_view;
+  ///
+  // Set to true (1) to create the browser using windowless (off-screen)
+  // rendering. No window will be created for the browser and all rendering will
+  // occur via the CefRenderHandler interface. The |parent_window| value will be
+  // used to identify monitor info and to act as the parent window for dialogs,
+  // context menus, etc. If |parent_window| is not provided then the main screen
+  // monitor will be used and some functionality that requires a parent window
+  // may not function correctly. In order to create windowless browsers the
+  // CefSettings.windowless_rendering_enabled value must be set to true.
+  // Transparent painting is enabled by default but can be disabled by setting
+  // CefBrowserSettings.background_color to an opaque value.
+  ///
   int windowless_rendering_enabled;
 
-
-
-
-  void* view;
+  ///
+  // Handle for the new browser window. Only used with windowed rendering.
+  ///
+  HWND window;
 } cef_window_info_t;
 
 
