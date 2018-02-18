@@ -18,6 +18,7 @@ ffi.cdef [[
 
 local cef = require( "../cef" )
 require( "test.cef_base" )
+require( "test.cef_app" )
 require( "test.cef_client" )
 require( "test.cef_life_span_handler" )
 
@@ -59,7 +60,7 @@ main_args.instance = ffi.C.GetModuleHandleW(nil);
 
 -- Cef app
 local app = ffi.new( "cef_app_t" );
--- initialize_cef_app(app);
+initialize_cef_app(app);
 
 -- Application settings. It is mandatory to set the
 -- "size" member.

@@ -35,7 +35,7 @@ end
 
 function initialize_cef_life_span_handler(handler)
     DEBUG_CALLBACK("initialize_cef_life_span_handler\n");
-    handler.base.size = ffi.sizeof(handler);
+    handler.base.size = ffi.sizeof( handler );
     initialize_cef_base_ref_counted(ffi.cast( "cef_base_ref_counted_t*", handler ));
     -- callbacks - there are many, but implementing only one
     handler.on_before_close = on_before_close;

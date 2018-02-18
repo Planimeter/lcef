@@ -136,7 +136,7 @@ end
 
 function initialize_cef_client(client)
     DEBUG_CALLBACK("initialize_client_handler\n");
-    client.base.size = ffi.sizeof(client);
+    client.base.size = ffi.sizeof( client );
     initialize_cef_base_ref_counted(ffi.cast( "cef_base_ref_counted_t*", client ));
     -- callbacks
     client.get_context_menu_handler = get_context_menu_handler;
