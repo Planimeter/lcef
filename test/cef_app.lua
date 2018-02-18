@@ -24,7 +24,7 @@ local cef = require( "../cef" )
 -- modify command-line arguments for non-browser processes as this may result
 -- in undefined behavior including crashes.
 ---
-function on_before_command_line_processing(self, process_type, command_line)
+local function on_before_command_line_processing(self, process_type, command_line)
     DEBUG_CALLBACK("on_before_command_line_processing\n");
 end
 
@@ -34,7 +34,7 @@ end
 -- each process and the registered schemes should be the same across all
 -- processes.
 ---
-function on_register_custom_schemes(self, registrar)
+local function on_register_custom_schemes(self, registrar)
     DEBUG_CALLBACK("on_register_custom_schemes\n");
 end
 
@@ -44,7 +44,7 @@ end
 -- If no handler is returned resources will be loaded from pack files. This
 -- function is called by the browser and render processes on multiple threads.
 ---
-function get_resource_bundle_handler(self)
+local function get_resource_bundle_handler(self)
     DEBUG_CALLBACK("get_resource_bundle_handler\n");
     return nil;
 end
@@ -53,7 +53,7 @@ end
 -- Return the handler for functionality specific to the browser process. This
 -- function is called on multiple threads in the browser process.
 ---
-function get_browser_process_handler(self)
+local function get_browser_process_handler(self)
     DEBUG_CALLBACK("get_browser_process_handler\n");
     return nil;
 end
@@ -62,7 +62,7 @@ end
 -- Return the handler for functionality specific to the render process. This
 -- function is called on the render process main thread.
 ---
-function get_render_process_handler(self)
+local function get_render_process_handler(self)
     DEBUG_CALLBACK("get_render_process_handler\n");
     return nil;
 end

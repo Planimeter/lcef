@@ -24,7 +24,7 @@ local cef = require( "../cef" )
 -- notification that references |browser|. See do_close() documentation for
 -- additional usage information.
 ---
-function on_before_close(self, browser)
+local function on_before_close(self, browser)
     DEBUG_CALLBACK("on_before_close\n");
     -- TODO: Check how many browsers do exist and quit message
     --       loop only when last browser is closed. Otherwise

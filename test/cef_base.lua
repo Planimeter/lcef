@@ -7,7 +7,7 @@ local cef = require( "../cef" )
 -- Set to 1 to check if add_ref() and release()
 -- are called and to track the total number of calls.
 -- add_ref will be printed as "+", release as "-".
-DEBUG_REFERENCE_COUNTING = false
+local DEBUG_REFERENCE_COUNTING = false
 
 -- Print only the first execution of the callback,
 -- ignore the subsequent.
@@ -32,7 +32,7 @@ end
 ---
 -- Increment the reference count.
 ---
-function add_ref(self)
+local function add_ref(self)
     DEBUG_CALLBACK("cef_base_ref_counted_t.add_ref\n");
     if (DEBUG_REFERENCE_COUNTING) then
         ffi.C.printf("+");
@@ -43,7 +43,7 @@ end
 -- Decrement the reference count.  Delete this object when no references
 -- remain.
 ---
-function release(self)
+local function release(self)
     DEBUG_CALLBACK("cef_base_ref_counted_t.release\n");
     if (DEBUG_REFERENCE_COUNTING) then
         ffi.C.printf("-");
@@ -54,7 +54,7 @@ end
 ---
 -- Returns the current number of references.
 ---
-function has_one_ref(self)
+local function has_one_ref(self)
     DEBUG_CALLBACK("cef_base_ref_counted_t.has_one_ref\n");
     if (DEBUG_REFERENCE_COUNTING) then
         ffi.C.printf("=");
