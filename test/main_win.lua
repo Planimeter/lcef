@@ -81,8 +81,8 @@ cef.cef_initialize(main_args, settings, app, nil);
 
 -- Window info
 local window_info = ffi.new( "cef_window_info_t" );
-window_info.style = bit.bor( bit.bor(0x00000000, 0x00C00000, 0x00080000,
-        0x00040000, 0x00020000, 0x00010000), 0x02000000, 0x04000000,
+window_info.style = bit.bor( bit.bor( 0x00000000, 0x00C00000, 0x00080000,
+        0x00040000, 0x00020000, 0x00010000 ), 0x02000000, 0x04000000,
         0x10000000 );
 window_info.parent_window = nil;
 window_info.x = 0x80000000;
