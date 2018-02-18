@@ -1,5 +1,5 @@
 # lcef
-LuaJIT FFI bindings for CEF
+LuaJIT FFI bindings for Chromium Embedded Framework
 
 ## License
 MIT License
