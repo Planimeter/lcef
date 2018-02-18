@@ -17,9 +17,12 @@ ffi.cdef [[
 ]]
 
 local cef = require( "../cef" )
+require( "test.cef_base" )
+require( "test.cef_client" )
+require( "test.cef_life_span_handler" )
 
 -- Globals
-local g_life_span_handler = ffi.new( "cef_life_span_handler_t" );
+g_life_span_handler = ffi.new( "cef_life_span_handler_t" );
 
 
 -- This executable is called many times, because it
@@ -56,11 +59,14 @@ main_args.instance = ffi.C.GetModuleHandleW(nil);
 
 -- Cef app
 local app = ffi.new( "cef_app_t" );
--- initialize_cef_app(&app);
+-- initialize_cef_app(app);
 
 -- Application settings. It is mandatory to set the
 -- "size" member.
 local settings = ffi.new( "cef_settings_t" );
+settings.size = ffi.sizeof( settings );
+settings.log_severity = ffi.C.LOGSEVERITY_WARNING; -- Show only warnings/errors
+settings.no_sandbox = 1;
 -- Specify the path for the sub-process executable.
 local browser_subprocess_path = "cef.exe";
 local cef_browser_subprocess_path = ffi.new( "cef_string_t" );
@@ -68,9 +74,6 @@ cef.cef_string_utf8_to_utf16(browser_subprocess_path,
                              string.len(browser_subprocess_path),
                              cef_browser_subprocess_path);
 settings.browser_subprocess_path = cef_browser_subprocess_path;
-settings.size = ffi.sizeof( settings );
-settings.log_severity = ffi.C.LOGSEVERITY_WARNING; -- Show only warnings/errors
-settings.no_sandbox = 1;
 
 -- Initialize CEF
 ffi.C.printf("cef_initialize\n");
@@ -106,8 +109,8 @@ browser_settings.size = ffi.sizeof( browser_settings );
 
 -- Client handlers
 local client = ffi.new( "cef_client_t" );
--- initialize_cef_client(&client);
--- initialize_cef_life_span_handler(&g_life_span_handler);
+initialize_cef_client(client);
+initialize_cef_life_span_handler(g_life_span_handler);
 
 -- Create browser asynchronously. There is also a
 -- synchronous version of this function available.
