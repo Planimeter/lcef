@@ -1,6 +1,11 @@
 # lcef
 LuaJIT FFI bindings for Chromium Embedded Framework
 
+## Install
+### Windows
+**02/13/2018 - CEF 3.3282.1733.g9091548 / Chromium 64.0.3282.119**  
+http://opensource.spotify.com/cefbuilds/index.html
+
 ## License
 MIT License
 
