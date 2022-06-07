@@ -1,5 +1,5 @@
 # lcef
-LuaJIT FFI bindings for Chromium Embedded Framework
+LuaJIT FFI bindings for Chromium Embedded Framework (**UNSTABLE**)
 
 ## Install
 ### Windows
